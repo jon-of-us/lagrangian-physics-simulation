@@ -5,7 +5,7 @@ import GLMakie as mk
 # constants
 # const rod_lengs = [3, 2, 4, 3]
 # const start_θ = [0, 1, 2, 1]
-n = 3
+n = 5
 const rod_lengs = rand(n) .+ 0.5
 const start_θ = rand(n) 
 const n_rods = length(rod_lengs)
@@ -28,6 +28,6 @@ const fps = 30
 const timestep = 1 / fps
 const n_simsteps = 1
 const simstep = timestep / n_simsteps
-const δ = 1e-3
+const δ = 1e-5
 
 end

@@ -44,8 +44,8 @@ function physics_step!(system)
 
     system.v += s.simstep * dv
     system.x += s.simstep * system.v 
-    sys.normalize_energy!(system)
   end
+  sys.normalize_energy!(system)
 end
 
 function animation_step!(system)
