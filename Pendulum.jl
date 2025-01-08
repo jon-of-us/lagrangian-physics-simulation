@@ -71,8 +71,8 @@ function normalize_energy!(pendulum::State)
   T = 0.5 * sum(euclid_v .^ 2)
   V = s.g * sum(euclid_x[2:2:end])
   should_be_T = pendulum.total_energy - V
-  if T > 1e-3
-    pendulum.v *= sqrt(abs(should_be_T / T))
+  if min(should_be_T, T) > 0.5pendulum.total_energy  
+    pendulum.v *= sqrt(should_be_T / T)
   end
 end
 

@@ -42,8 +42,8 @@ function physics_step!(system)
     Jy_∇vL += rand(n, n) * s.δ * 1e-10
     dv = Jy_∇vL \ (∇xL - dtx_∇vL)
 
-    system.x += s.simstep * v 
     system.v += s.simstep * dv
+    system.x += s.simstep * system.v 
     sys.normalize_energy!(system)
   end
 end
@@ -58,5 +58,6 @@ fig = sys.plot!(system)
 
 while true
   animation_step!(system)
+  # println(system.x)
   sleep(s.timestep)
 end
