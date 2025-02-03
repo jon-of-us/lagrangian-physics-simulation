@@ -4,8 +4,8 @@ Base.show(io::IO, f::Float64) = Printf.@printf(io, "%s", abs(f) < 1e-12 ? "0" : 
 
 include("./Settings.jl");
 import .Settings as s
-include("./Pendulum.jl");
-import .Pendulum as sys
+include("./Rope.jl");
+import .Rope as sys
 
 function grad(x, f)
   n = length(x)
@@ -39,7 +39,7 @@ function physics_step!(system)
       ∇vL2 = grad(v2, v -> sys.lagrangian(x, v))
       Jy_∇vL[:, i] = (∇vL2 - ∇vL) / s.δ
     end 
-    Jy_∇vL += rand(n, n) * s.δ * 1e-10
+    Jy_∇vL += rand(n, n) * s.δ 
     dv = Jy_∇vL \ (∇xL - dtx_∇vL)
 
     system.v += s.simstep * dv
