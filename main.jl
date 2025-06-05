@@ -4,8 +4,8 @@ Base.show(io::IO, f::Float64) = Printf.@printf(io, "%s", abs(f) < 1e-12 ? "0" : 
 
 include("./Settings.jl");
 import .Settings as s
-include("./Rope.jl");
-import .Rope as sys
+include("./Pendulum.jl");
+import .Pendulum as sys
 
 function grad(x, f)
   n = length(x)
